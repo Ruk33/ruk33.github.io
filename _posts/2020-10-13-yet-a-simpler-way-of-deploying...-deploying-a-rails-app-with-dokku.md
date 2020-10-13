@@ -21,6 +21,10 @@ dokku git:initialize your_app
 # Set up any environment variables required
 dokku config:set --no-restart your_app RAILS_MASTER_KEY=...
 
+# Enable and set up domain
+dokku domains:enable your_app
+dokku domains:set your_app your.domain.com
+
 # Install let's encrypt plugin
 # to generate a ssl certificate
 sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
