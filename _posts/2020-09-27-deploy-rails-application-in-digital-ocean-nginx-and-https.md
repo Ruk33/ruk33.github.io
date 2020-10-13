@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Deploy Rails application in DigitalOcean, Nginx, and HTTPS"
-date:   2020-10-11 20:53:35 -0300
+date:   2020-09-27 20:53:35 -0300
 categories: jekyll update
 ---
 
