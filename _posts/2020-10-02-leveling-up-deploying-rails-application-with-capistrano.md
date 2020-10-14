@@ -1,7 +1,8 @@
 ---
-layout: post
-title:  "Leveling up, deploying Rails application with Capistrano"
-date:   2020-10-02 20:53:35 -0300
+layout:     post
+title:      "Leveling up, deploying Rails application with Capistrano"
+date:       2020-10-02 20:53:35 -0300
+comments:   true
 ---
 
 Last time we [deployed a rails application using plain good ol’ scripts](https://ruk33.github.io/deploy-rails-application-in-digital-ocean-nginx-and-https). 

@@ -1,7 +1,8 @@
 ---
-layout: post
-title:  "Yet a simpler way of deploying... deploying a rails app with dokku"
-date:   2020-10-13 15:54:54 -0300
+layout:       post
+title:        "Yet a simpler way of deploying... deploying a rails app with dokku"
+date:         2020-10-13 15:54:54 -0300
+comments:     true
 ---
 
 There are so many ways of deploying an application, in this short post I would 

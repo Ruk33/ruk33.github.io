@@ -1,7 +1,8 @@
 ---
-layout: post
-title:  "Deploy Rails application in DigitalOcean, Nginx, and HTTPS"
-date:   2020-09-27 20:53:35 -0300
+layout:     post
+title:      "Deploy Rails application in DigitalOcean, Nginx, and HTTPS"
+date:       2020-09-27 20:53:35 -0300
+comments:   true
 ---
 
 Straight to the point, you need to deploy a Rails application and you are 

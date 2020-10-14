@@ -41,8 +41,9 @@ touch ${FILENAME}
 
 # add YAML front matter
 echo -e "---
-layout: post
-title:  \"${TITLE}\"
-date:   ${DATE_TIME}
+layout:     post
+title:      \"${TITLE}\"
+date:       ${DATE_TIME}
+comments:   true
 ---
 " >> ${FILENAME}

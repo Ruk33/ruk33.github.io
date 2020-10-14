@@ -1,7 +1,8 @@
 ---
-layout: post
-title:  "From Medium to Jekyll"
-date:   2020-10-12 22:56:51 -0300
+layout:     post
+title:      "From Medium to Jekyll"
+date:       2020-10-12 22:56:51 -0300
+comments:   true
 ---
 
 I recently began writing articles, posts, whatever you wanna call it. 
