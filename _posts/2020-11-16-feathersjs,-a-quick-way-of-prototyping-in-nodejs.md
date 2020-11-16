@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Featherjs, a quick way of prototyping in NodeJS"
+title:      "FeathersJs, a quick way of prototyping in NodeJS"
 date:       2020-11-16 01:52:49 -0300
 comments:   true
 ---
@@ -172,7 +172,7 @@ module.exports = {
 };
 ```
 
-FeatherJs makes use of [hooks](https://docs.feathersjs.com/guides/basics/hooks.html#quick-example) 
+FeathersJs makes use of [hooks](https://docs.feathersjs.com/guides/basics/hooks.html#quick-example) 
 to attach some of these behaviors, in this case, we are saying that before performing 
 any action on this service, it has to go through the `authenticate` hook.
 

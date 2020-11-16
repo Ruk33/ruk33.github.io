@@ -67,7 +67,7 @@ The new database should have all the data loaded.
 
 ## Bonus tip, periodic backups to S3
 
-Let's add automatic backups. First, you will need a AWS account, and then,
+Let's add automatic backups. First, you will need an AWS account, and then,
 go to [IAM](https://console.aws.amazon.com/iam/home?#/home). [Create a new user](https://console.aws.amazon.com/iam/home?#/users$new?step=details) with Programmatic access. Add the Administrator 
 permissions (this is not a good practice so you may want to look up what permissions you need, 
 in this case, we just need to upload files to S3) and finish the process.
