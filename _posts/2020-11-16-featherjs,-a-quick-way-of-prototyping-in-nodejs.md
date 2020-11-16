@@ -5,37 +5,37 @@ date:       2020-11-16 01:52:49 -0300
 comments:   true
 ---
 
-So I recently helped a friend of mine with one of his applications. The requirements
-were quite easy, you know the usual:
+So I recently helped a friend of mine with one of his applications. 
+The requirements were quite easy, you know the usual:
 
 - Registration
 - Login
 - Data entry
-- Third party API consuption (just an http call)
+- Third-party API consumption (just an HTTP call)
 
-Pretty simple right? if it would depend on my I would throw a good ol' Ruby on Rails 
-on the mix and pretty much everything is done. Thing was, the tech stack 
+Pretty simple right? if it would depend on my I would throw a good ol' Ruby on 
+Rails on the mix and pretty much everything is done. Thing was, the tech stack 
 was already defined and we couldn't just change it.
 
 The tech stack we had to work with was [NodeJS](https://nodejs.org/en/) and... you may want to get a bucket 
-to throw up... [MongoDB](https://www.mongodb.com/) (yes, I don't like no sql databases). For the frontend it 
+to throw up... [MongoDB](https://www.mongodb.com/) (yes, I don't like no-SQL databases). For the frontend, it 
 was [React](https://reactjs.org/). I'm a bit tired of React but that wasn't so bad.
 
 ## Hunting for a foundation to work on
 
-My first thought was, "ok we can get somethig quickly with [ExpressJS](https://expressjs.com/)", 
+My first thought was, "ok we can get something quickly with [ExpressJS](https://expressjs.com/)", 
 but man, I wanted something a bit more pre-configured and, with ExpressJS you have to
-set up database connections, authentication, and a few other things. I mean, this is
+set up database connections, authentication and a few other things. I mean, this is
 not a flaw of ExpressJS, it's in fact by design. It's light and it only has the features 
 it needs to get the minimum working.
 
 ## Letting the lazy instinct kick in
 
 Or :cough: being smart and choosing the tools based on the work I need to do. Luckily for us,
-ExpressJS has a very good [resources collection](https://expressjs.com/en/resources/frameworks.html) 
+ExpressJS has a very good [resource collection](https://expressjs.com/en/resources/frameworks.html) 
 where you can choose between a few frameworks.
 
-If you open up the previous link, you will see the first result, what does it says?
+If you open up the previous link, you will see the first result, what does it say?
 
 > Feathers: Build prototypes in minutes and production ready real-time apps in days.
 
@@ -140,7 +140,7 @@ await app.logout()
 ## Consuming protected endpoints
 
 Ok, now we need to consume an endpoint that's behind an authorization wall. 
-The users has to be logged in otherwise it can't use it, how do we do it?
+The users have to be logged in otherwise it can't use it, how do we do it?
 
 First of all, let's create a new model, or, how FeathersJs refers to it, service:
 
@@ -149,7 +149,7 @@ feathers generate service
 ```
 
 Again, the generator will ask you a few questions about it, one of those being,
-does this service requires authentication? Perfect, exatly what we are looking for.
+does this service requires authentication? Perfect, exactly what we are looking for.
 
 If you look at the generated files, you will notice there is a `<service-name>.hooks.js`. 
 Go ahead and open that up:
@@ -181,17 +181,17 @@ If a guest tries to use it, it will simply return a good ol' `401 Unauthorized`.
 
 ## Reviewing original requirements
 
-Ok so we said we needed authorization, authentication, login, register and finally, 
+Ok, so we said we needed authorization, authentication, login, register, and finally, 
 a third party API call. We pretty much got everything except for the last one.
 
-Going a bit deeper on the requirement, we need to consume a third party API when 
+Going a bit deeper on the requirement, we need to consume a third-party API when 
 saving a new record in the database. We need to store the result of that API call in the 
 new entry. And, I don't know about you but this looks like a perfect job for hooks, right?
 
 ## Adding behavior with hooks
 
-Writing custom hooks it's quite easy, you just need to define a function that takes 
-a `context` as a parameter and then return it back.
+Writing custom hooks is quite easy, you just need to define a function that takes 
+a `context` as a parameter and then return it.
 
 Let's implement our requirement then:
 
@@ -219,9 +219,9 @@ module.exports = {
 ```
 
 Every time we create a new entry or update it, we will run `storeApiResult` and 
-update it's `api_result` value. But what, where is `service.consumeApi` defined?
+update its `api_result` value. But wait, where is `service.consumeApi` defined?
 
-This method is defined on `<service-name>.class.js` and such:
+This method is defined on `<service-name>.class.js` as such:
 
 ```js
 const { Service } = require('feathers-mongoose');
@@ -264,4 +264,14 @@ exports.ServiceName = class ServiceName extends Service {
 }
 ```
 
-And that's it, we got all the requirements!
+And that's it, we got all the requirements! Oh wait, we need to add data entry 
+as well. No problem!
+
+```js
+await app.service('<service-name>').create({
+    foo: 'foo',
+    bar: 'bar'
+});
+```
+
+This will create a new entry in the database only if our user is authenticated.
