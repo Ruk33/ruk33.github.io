@@ -62,7 +62,8 @@ And now we can migrate the database
 PGPASSWORD=<db-password> pg_dump -U <db-user> -h <db-host> -p <db-port> <db-name> | psql -h <internal-db-ip> -U postgres <db-name>
 ```
 
-And that's it, the new database should have all the data loaded.
+And that's it, we create a backup using `pg_dump` and restore it using `psql`. 
+The new database should have all the data loaded.
 
 ## Bonus tip, periodic backups to S3
 
@@ -71,12 +72,12 @@ go to [IAM](https://console.aws.amazon.com/iam/home?#/home). [Create a new user]
 permissions (this is not a good practice so you may want to look up what permissions you need, 
 in this case, we just need to upload files to S3) and finish the process.
 
-Once you got your account, select the account, go to Security Credentials and 
+Once you get your account, select the account, go to Security Credentials and 
 create a new Access key. Copy the credentials and let's use it with dokku:
 
 ```sh
 # Authenticate yourself
-dokku postgres:backup-auth db-production <access-key-id> <secret>
+dokku postgres:backup-auth <db-name> <access-key-id> <secret>
 ```
 
 Now go to S3 and create a [new bucket](https://s3.console.aws.amazon.com/s3/bucket/create?region=sa-east-1).
