@@ -1,0 +1,28 @@
+ruk33
+
+This is my personal blog/page/whatever where sometimes, I write about programming.
+
+This project uses jekyll (https://jekyllrb.com/).
+
+
+Start
+-----
+
+- bundle exec jekyll serve
+
+
+Problems with assets?
+---------------------
+
+Delete _site folder.
+
+
+Create a new post
+-----------------
+
+Use the script located in scripts/new_post.sh to start with a base
+and a few variables defined (date, name, etc.)
+
+Example:
+
+bash ./scripts/new_post.sh "This is my title"
